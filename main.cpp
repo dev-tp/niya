@@ -16,15 +16,16 @@ int main() {
         lastTile = game.makeMove(playerOne, lastTile);
         if(game.checkForWinner()) {
             cout << playerOne.name << ": You win!" << endl;
-            break;
+            exit(0);
         }
 
         lastTile = game.makeMove(playerTwo, lastTile);
         if(game.checkForWinner()) {
             cout << playerTwo.name << ": You win!" << endl;
-            break;
+            exit(0);
         }
     }
 
+    cout << "The match ends in tie!" << endl;
     return 0;
 }

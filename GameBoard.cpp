@@ -119,7 +119,7 @@ string GameBoard::makeMove(Player player, string lastTile) {
                 return lastTile;
             } else {
                 cout << "\n" << x << " and " << y << " are not valid: " <<
-                "The tile you choose should contain one symbol of the previous one." << endl;
+                "The tile you choose should contain one symbol of the previous tile." << endl;
             }
         } else {
             lastTile = this->board[x][y];
