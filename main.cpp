@@ -1,8 +1,8 @@
 #include <iostream>
-#include "GameBoard.h"
+#include "Game.h"
 
 int main() {
-    GameBoard game;
+    Game game;
     Player playerOne("P1", "RED");
     Player playerTwo("P2", "BLK");
 

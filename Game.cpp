@@ -1,13 +1,11 @@
 #include <iostream>
 #include <sstream>
-#include <time.h>
+#include <ctime>
 
-#include "GameBoard.h"
+#include "Game.h"
 #include "Tile.h"
 
-time_t seconds;
-
-void GameBoard::printBoard() {
+void Game::printBoard() {
     for(int i = 0; i < 4; i++) {
         for(int j = 0; j < 4; j++)
             cout << this->board[i][j] + " ";
@@ -15,9 +13,9 @@ void GameBoard::printBoard() {
     }
 }
 
-void GameBoard::initBoard() {
+void Game::initBoard() {
     vector<string> permutations;
-    seconds = time(NULL);
+    time_t seconds = time(NULL);
     for(int i = 0; i < 4; i++) {
         int j = 0;
         while(j < 4) {
@@ -31,7 +29,7 @@ void GameBoard::initBoard() {
     this->printBoard();
 }
 
-bool GameBoard::checkForWinner() {
+bool Game::checkForWinner() {
     if(board[0][0] == board[1][1] && board[2][2] == board[3][3]) {
         return true;
     } else if(board[0][3] == board[1][2] && board[2][1] == board[3][0]) {
@@ -62,21 +60,21 @@ bool GameBoard::checkForWinner() {
     return false;
 }
 
-bool GameBoard::pairDoesNotExist(vector<string> *permutations, char a, char b) {
+bool Game::pairDoesNotExist(vector<string> *pairs, char a, char b) {
     string pairOne, pairTwo;
     pairOne += a; pairOne += ' '; pairOne += b;
     pairTwo += b; pairTwo += ' '; pairTwo += a;
 
-    if(contains(permutations, pairOne) || contains(permutations, pairTwo))
+    if(contains(pairs, pairOne) || contains(pairs, pairTwo))
         return false;
 
-    permutations->push_back(pairOne);
+    pairs->push_back(pairOne);
     return true;
 }
 
-bool GameBoard::contains(vector<string> *container, string s) {
-    for(string str: *container)
-        if(str == s)
+bool Game::contains(vector<string> *pairs, string pair) {
+    for(string temp: *pairs)
+        if(temp == pair)
             return true;
     return false;
 }
@@ -92,7 +90,7 @@ vector<string> split(string str, char delimiter) {
     return result;
 }
 
-bool GameBoard::isValidMove(int x, int y, string lastTile) {
+bool Game::isValidMove(int x, int y, string lastTile) {
     string tile = this->board[x][y];
     vector<string> a = split(tile, '/');
     vector<string> b = split(lastTile, '/');
@@ -102,7 +100,7 @@ bool GameBoard::isValidMove(int x, int y, string lastTile) {
     return false;
 }
 
-string GameBoard::makeMove(Player player, string lastTile) {
+string Game::makeMove(Player player, string lastTile) {
     int x, y;
     while(true) {
         cout << "Your turn: " << player.name << endl;

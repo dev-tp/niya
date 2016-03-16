@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class GameBoard {
+class Game {
     string board[4][4];
     static bool contains(vector<string>*, string);
     bool isValidMove(int, int, string);
