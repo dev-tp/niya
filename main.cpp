@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include "Game.h"
 
@@ -7,9 +8,7 @@ int main() {
     Player playerTwo("P2", "BLK");
 
     game.initBoard();
-
-    string lastTile;
-    lastTile = game.makeMove(playerOne, lastTile);
+    string lastTile = game.makeMove(playerOne, "");
     lastTile = game.makeMove(playerTwo, lastTile);
 
     for(int i = 0; i < 7; i++) {
