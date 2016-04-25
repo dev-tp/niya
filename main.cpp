@@ -4,24 +4,20 @@
 
 int main() {
     Game game;
-    Player playerOne("P1", "RED");
-    Player playerTwo("P2", "BLK");
+    Player players[2];
+    players[1].changeNameAndColor("P2", "BLK");
 
     game.initBoard();
-    string lastTile = game.makeMove(playerOne, "");
-    lastTile = game.makeMove(playerTwo, lastTile);
+    string lastTile = game.makeMove(players[0], "");
+    lastTile = game.makeMove(players[1], lastTile);
 
     for(int i = 0; i < 7; i++) {
-        lastTile = game.makeMove(playerOne, lastTile);
-        if(game.checkForWinner()) {
-            cout << playerOne.name << ": You win!" << endl;
-            exit(0);
-        }
-
-        lastTile = game.makeMove(playerTwo, lastTile);
-        if(game.checkForWinner()) {
-            cout << playerTwo.name << ": You win!" << endl;
-            exit(0);
+        for(Player player: players) {
+            lastTile = game.makeMove(player, lastTile);
+            if(game.checkForWinner()) {
+                cout << player.name << ": You win!" << endl;
+                exit(0);
+            }
         }
     }
 

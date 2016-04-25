@@ -15,11 +15,11 @@ void Game::printBoard() {
 
 void Game::initBoard() {
     vector<string> permutations;
-    time_t seconds = time(NULL);
+    unsigned int seconds = time(NULL);
     for(int i = 0; i < 4; i++) {
         int j = 0;
         while(j < 4) {
-            srand((unsigned int) ++seconds);
+            srand(++seconds);
             Tile tile;
             char l = tile.getTypeOne(), k = tile.getTypeTwo();
             if(l != k && pairDoesNotExist(&permutations, l, k))
