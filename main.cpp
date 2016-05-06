@@ -1,11 +1,12 @@
 #include <cstdlib>
 #include <iostream>
-#include "Game.h"
+
+#include "game.h"
 
 int main() {
     Game game;
-    Player players[2];
-    players[1].changeNameAndColor("P2", "BLK");
+
+    Player players[] = { Player("P1", "RED"), Player("P2", "BLK") };
 
     game.initBoard();
     string lastTile = game.makeMove(players[0], "");
@@ -22,5 +23,6 @@ int main() {
     }
 
     cout << "The match ends in tie!" << endl;
+
     return 0;
 }

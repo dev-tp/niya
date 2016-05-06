@@ -2,8 +2,8 @@
 #include <sstream>
 #include <ctime>
 
-#include "Game.h"
-#include "Tile.h"
+#include "game.h"
+#include "tile.h"
 
 void Game::printBoard() {
     for(int i = 0; i < 4; i++) {
