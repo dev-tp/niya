@@ -1,6 +1,6 @@
+#include <ctime>
 #include <iostream>
 #include <sstream>
-#include <ctime>
 
 #include "game.h"
 #include "tile.h"
@@ -8,12 +8,12 @@
 void Game::printBoard() {
     for(int i = 0; i < 4; i++) {
         for(int j = 0; j < 4; j++)
-            cout << this->board[i][j] + " ";
+            cout << this->board[i][j] + ' ';
         cout << endl;
     }
 }
 
-void Game::initBoard() {
+void Game::init() {
     vector<string> permutations;
     unsigned int seconds = time(NULL);
     for(int i = 0; i < 4; i++) {
@@ -38,24 +38,25 @@ bool Game::checkForWinner() {
         return true;
     } else {
         // Checks rows and columns
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < 4; i++) {
             if(board[i][0] == board[i][1] && board[i][2] == board[i][3])
                 return true;
-        for(int i = 0; i < 4; i++)
             if(board[0][i] == board[1][i] && board[2][i] == board[3][i])
                 return true;
+        }
 
-        // Checks for squares
+        // Check for squares
         for(int i = 0; i < 4; i += 2)
             for(int j = 0; j < 4; j += 2)
                 if(board[i][j] == board[i][j+1] && board[i+1][j] == board[i+1][j+1])
                     return true;
-        for(int i = 0; i < 4; i += 2)
+
+        for(int i = 0; i < 4; i += 2) {
             if(board[i][1] == board[i][2] && board[i+1][1] == board[i+1][2])
                 return true;
-        for(int i = 0; i < 4; i += 2)
             if(board[1][i] == board[1][i+1] && board[2][i] == board[2][i+1])
                 return true;
+        }
     }
     return false;
 }

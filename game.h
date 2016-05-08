@@ -14,5 +14,5 @@ class Game {
 public:
     bool checkForWinner();
     string makeMove(Player, string);
-    void initBoard();
+    void init();
 };

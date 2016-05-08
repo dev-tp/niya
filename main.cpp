@@ -8,7 +8,7 @@ int main() {
 
     Player players[] = { Player("P1", "RED"), Player("P2", "BLK") };
 
-    game.initBoard();
+    game.init();
     string lastTile = game.makeMove(players[0], "");
     lastTile = game.makeMove(players[1], lastTile);
 
