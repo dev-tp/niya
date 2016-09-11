@@ -3,7 +3,7 @@
 
 #include "game.h"
 
-int main() {
+int main(int argc, char *argv[]) {
     Game game;
 
     Player players[] = { Player("P1", "RED"), Player("P2", "BLK") };
@@ -12,10 +12,10 @@ int main() {
     string lastTile = game.makeMove(players[0], "");
     lastTile = game.makeMove(players[1], lastTile);
 
-    for(int i = 0; i < 7; i++) {
-        for(Player player: players) {
+    for (int i = 0; i < 7; i++) {
+        for (Player player: players) {
             lastTile = game.makeMove(player, lastTile);
-            if(game.checkForWinner()) {
+            if (game.checkForWinner()) {
                 cout << player.name << ": You win!" << endl;
                 exit(0);
             }
