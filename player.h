@@ -1,3 +1,6 @@
+#ifndef player_h
+#define player_h
+
 class Player {
 public:
     std::string name, color;
@@ -6,5 +9,6 @@ public:
         this->name = name;
         this->color = color;
     }
-
 };
+
+#endif

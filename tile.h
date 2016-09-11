@@ -1,3 +1,6 @@
+#ifndef tile_h
+#define tile_h
+
 #include <cstdlib>
 
 class Tile {
@@ -9,17 +12,19 @@ public:
         this->typeTwo = Tile::icons[rand() % 8];
     }
 
-    char getTypeOne() { return this->typeOne; }
-    char getTypeTwo() { return this->typeTwo; }
+    char getTypeOne() { return typeOne; }
+    char getTypeTwo() { return typeTwo; }
 
     std::string toString() {
         std::string tile;
-        tile += this->typeOne;
+        tile += typeOne;
         tile += '/';
-        tile += this->typeTwo;
+        tile += typeTwo;
         return tile;
     }
 
 };
 
 string Tile::icons = "ABCDEFGH";
+
+#endif
